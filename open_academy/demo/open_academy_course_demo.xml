@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
   <data noupdate="1">
-    <record id="open_academy_course_nikon" model="open.academy.course">
-      <field name="name">Nikon Course</field>
-      <field name="description">A cool Nikon course</field>
+    <record id="open_academy_course_nikon_demo" model="open.academy.course">
+      <field name="name">Nikon</field>
+      <field name="description">A cool Nikon crashcourse</field>
     </record>
-    <record id="open_academy_course_canon" model="open.academy.course">
-      <field name="name">Canon Course</field>
-      <field name="description">A cool Canon course</field>
+
+    <record id="open_academy_course_canon_demo" model="open.academy.course">
+      <field name="name">Canon</field>
+      <field name="description">A cool Canon crashcourse</field>
     </record>
-    <record id="open_academy_course_leica" model="open.academy.course">
-      <field name="name">Leica Course</field>
-      <field name="description">A cool Leica course</field>
+
+    <record id="open_academy_course_leica_demo" model="open.academy.course">
+      <field name="name">Leica</field>
+      <field name="description">A cool Leica crashcourse</field>
     </record>
+
   </data>
 </odoo>

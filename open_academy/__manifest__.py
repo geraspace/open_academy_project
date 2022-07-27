@@ -10,7 +10,11 @@
     "depends": [
         "base"
         ],
-    "data": [],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/open_academy_course_views.xml",
+        "views/open_academy_menus_views.xml"
+        ],
     "demo": [
         "demo/open_academy_course_demo.xml"
     ],
