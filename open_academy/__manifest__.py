@@ -13,6 +13,7 @@
     "data": [
         "security/ir.model.access.csv",
         "views/open_academy_course_views.xml",
+        "views/open_academy_session_views.xml",
         "views/open_academy_menus_views.xml"
         ],
     "demo": [
