@@ -12,12 +12,14 @@
         <field name="model">open.academy.session</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="active"/>
                 <field name="name"/>
                 <field name="start_date" />
                 <field name="duration" />
                 <field name="seats" />
                 <field name="instructor_id" />
                 <field name="course_id" />
+                <field name="taken_seats" widget="progressbar" />
             </tree>
         </field>
     </record>
@@ -29,12 +31,14 @@
             <form>
                 <sheet>
                     <group>
+                        <field name="active"/>
                         <field name="name"/>
                         <field name="start_date" />
                         <field name="duration" />
                         <field name="seats" />
                         <field name="instructor_id" />
                         <field name="course_id" />
+                        <field name="taken_seats" widget="progressbar"/>
                     </group>
                     <notebook>
                         <page name="attendee_ids" string="Attendee">
