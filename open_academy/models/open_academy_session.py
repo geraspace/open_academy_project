@@ -1,4 +1,5 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 
 class OpenAcademySession(models.Model):
@@ -31,13 +32,19 @@ class OpenAcademySession(models.Model):
             return {
                 "warning": {
                     "title": "Incorrect values",
-                    "message": "The number of seats can not be less than 0"
+                    "message": "The number of seats can not be less than 0."
                 }
             }
-        elif len(self.attendee_ids) > self.seats:
+        if len(self.attendee_ids) > self.seats:
             return {
                 "warning": {
                     "title": "Incorrect values",
-                    "message": "The number of attendees can not be greater than the seats available"
+                    "message": "The number of attendees can not be greater than the seats available."
                 }
             }
+
+    @api.constrains("instructor_id", "attendee_ids")
+    def _check_instructor_in_attendee(self):
+        for record in self.filtered('instructor_id'):
+            if record.instructor_id in record.attendee_ids:
+                raise ValidationError("A session's instructor can't be an attendee.")
