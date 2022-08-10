@@ -1,6 +1,5 @@
-from odoo import models, fields, api, _
+from odoo import models, fields, api
 from odoo.exceptions import ValidationError
-
 
 class OpenAcademySession(models.Model):
     _name = "open.academy.session"
@@ -16,7 +15,13 @@ class OpenAcademySession(models.Model):
     course_id = fields.Many2one("open.academy.course", ondelete="cascade", required=True)
     attendee_ids = fields.Many2many("res.partner", "session_res_partner_rel", string="Attendes")
 
+    attendees_count = fields.Integer(compute='_compute_attendees_count', store=True)
     taken_seats = fields.Float(compute="_compute_taken_seats")
+
+    @api.depends("attendee_ids")
+    def _compute_attendees_count(self):
+        for record in self:
+            record.attendees_count = len(record.attendee_ids)
 
     @api.depends("seats", "attendee_ids")
     def _compute_taken_seats(self):
