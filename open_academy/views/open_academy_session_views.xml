@@ -5,7 +5,7 @@
     <record id="open_academy_session_action" model="ir.actions.act_window">
         <field name="name">Sessions</field>
         <field name="res_model">open.academy.session</field>
-        <field name="view_mode">tree,form,calendar</field>
+        <field name="view_mode">tree,kanban,form,calendar,graph</field>
     </record>
 
     <record id="open_academy_session_view_tree" model="ir.ui.view">
@@ -59,6 +59,40 @@
             <calendar date_start="start_date" color="instructor_id">
                 <field name="name" />
             </calendar>
+        </field>
+    </record>
+
+    <record id="open_academy_session_view_graph" model="ir.ui.view">
+        <field name="name">open.academy.session.view.graph</field>
+        <field name="model">open.academy.session</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="course_id"/>
+                <field name="attendees_count" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="open_academy_session_view_kanban" model="ir.ui.view">
+        <field name="name">open.academy.session.view.kanban</field>
+        <field name="model">open.academy.session</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="course_id">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_content">
+                                    Session name:
+                            <field name="name"/>
+                            <br/>
+                                    Start date:
+                            <field name="start_date"/>
+                            <br/>
+                                    duration:
+                            <field name="duration"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
         </field>
     </record>
 
