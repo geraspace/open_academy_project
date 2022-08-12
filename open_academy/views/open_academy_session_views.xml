@@ -87,7 +87,7 @@
                                     Start date:
                             <field name="start_date"/>
                             <br/>
-                                    duration:
+                                    Duration:
                             <field name="duration"/>
                         </div>
                     </t>
