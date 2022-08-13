@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-15 15:47+0000\n"
-"PO-Revision-Date: 2022-08-15 15:47+0000\n"
+"POT-Creation-Date: 2022-08-16 22:33+0000\n"
+"PO-Revision-Date: 2022-08-16 22:33+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,19 +19,19 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:open_academy.open_academy_session_view_kanban
 msgid ""
 "<br/>\n"
-"                                    Start date:"
+"                                    Duration:"
 msgstr ""
 "<br/>\n"
-"                                    Fecha de inicio:"
+"                                    Duración:"
 
 #. module: open_academy
 #: model_terms:ir.ui.view,arch_db:open_academy.open_academy_session_view_kanban
 msgid ""
 "<br/>\n"
-"                                    Duration:"
+"                                    Start date:"
 msgstr ""
 "<br/>\n"
-"                                    Duración:"
+"                                    Fecha de inicio:"
 
 #. module: open_academy
 #: code:addons/open_academy/models/open_academy_session.py:0
@@ -71,9 +71,26 @@ msgid "Attendees Count"
 msgstr "Número de asistentes"
 
 #. module: open_academy
+#: model:ir.actions.act_window,name:open_academy.act_session_graph
+#: model_terms:ir.ui.view,arch_db:open_academy.board_session_form
+msgid "Attendees by course"
+msgstr "Asistentes por curso"
+
+#. module: open_academy
+#: model_terms:ir.ui.view,arch_db:open_academy.report_session_template
+msgid "Attendees:"
+msgstr "Asistentes"
+
+#. module: open_academy
 #: model:ir.model.fields,field_description:open_academy.field_open_academy_session__attendee_ids
 msgid "Attendes"
 msgstr "Asistentes"
+
+#. module: open_academy
+#: model:ir.actions.act_window,name:open_academy.act_session_calendar
+#: model_terms:ir.ui.view,arch_db:open_academy.board_session_form
+msgid "Calendar"
+msgstr "Calendario"
 
 #. module: open_academy
 #: model_terms:ir.ui.view,arch_db:open_academy.open_academy_wizard_view_form
@@ -92,8 +109,10 @@ msgid "Course"
 msgstr "Curso"
 
 #. module: open_academy
+#: model:ir.actions.act_window,name:open_academy.act_course_list
 #: model:ir.actions.act_window,name:open_academy.open_academy_course_action
 #: model:ir.ui.menu,name:open_academy.open_academy_course_menu
+#: model_terms:ir.ui.view,arch_db:open_academy.board_session_form
 msgid "Courses"
 msgstr "Cursos"
 
@@ -126,6 +145,11 @@ msgstr "Duración"
 #: model:ir.model.fields,help:open_academy.field_open_academy_session__duration
 msgid "Duration in days"
 msgstr "Duración en días"
+
+#. module: open_academy
+#: model_terms:ir.ui.view,arch_db:open_academy.report_session_template
+msgid "From"
+msgstr "Del"
 
 #. module: open_academy
 #: model:ir.model.fields,field_description:open_academy.field_open_academy_course__id
@@ -200,9 +224,20 @@ msgid "Session"
 msgstr "Sesión"
 
 #. module: open_academy
+#: model:ir.actions.act_window,name:open_academy.open_academy_board_session_action
+#: model_terms:ir.ui.view,arch_db:open_academy.board_session_form
+msgid "Session Dashboard"
+msgstr "Tablero de sesión"
+
+#. module: open_academy
 #: model_terms:ir.ui.view,arch_db:open_academy.open_academy_session_view_kanban
 msgid "Session name:"
 msgstr "Nombre de la sesión:"
+
+#. module: open_academy
+#: model:ir.actions.report,name:open_academy.open_academy_session_report
+msgid "Session report"
+msgstr "Reporte de sesión"
 
 #. module: open_academy
 #: model:ir.actions.act_window,name:open_academy.open_academy_session_action
@@ -211,6 +246,11 @@ msgstr "Nombre de la sesión:"
 #: model_terms:ir.ui.view,arch_db:open_academy.view_partner_form_inherit
 msgid "Sessions"
 msgstr "Sesiones"
+
+#. module: open_academy
+#: model:ir.ui.menu,name:open_academy.open_academy_board_session_menu
+msgid "Sessions Dashboard"
+msgstr "Tablero de sesiones"
 
 #. module: open_academy
 #: model:ir.model.fields,field_description:open_academy.field_open_academy_session__start_date
@@ -250,3 +290,8 @@ msgstr "El número de asientos no puede ser menor a 0."
 #: model_terms:ir.ui.view,arch_db:open_academy.open_academy_wizard_view_form
 msgid "or"
 msgstr "o"
+
+#. module: open_academy
+#: model_terms:ir.ui.view,arch_db:open_academy.report_session_template
+msgid "to"
+msgstr "al"

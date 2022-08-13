@@ -19,6 +19,7 @@ class OpenAcademySession(models.Model):
 
     attendees_count = fields.Integer(compute='_compute_attendees_count', store=True)
     taken_seats = fields.Float(compute="_compute_taken_seats")
+    end_date = fields.Date(store=True, compute='_compute_end_date')
 
     @api.depends("attendee_ids")
     def _compute_attendees_count(self):
@@ -32,6 +33,22 @@ class OpenAcademySession(models.Model):
                 record.taken_seats = 0.0
             else:
                 record.taken_seats = 100.0 * len(record.attendee_ids) / record.seats
+
+    @api.depends('start_date', 'duration')
+    def _compute_end_date(self):
+        for record in self:
+            if not (record.start_date and record.duration):
+                record.end_date = False
+                continue
+
+            start = fields.Datetime.from_string(record.start_date)
+            record.end_date = start + record.duration
+
+    @api.constrains("instructor_id", "attendee_ids")
+    def _check_instructor_in_attendee(self):
+        for record in self.filtered('instructor_id'):
+            if record.instructor_id in record.attendee_ids:
+                raise ValidationError(_("A session's instructor can't be an attendee."))
 
     @api.onchange("seats", "attendee_ids")
     def _onchange_seats(self):
@@ -49,9 +66,3 @@ class OpenAcademySession(models.Model):
                     "message": _("The number of attendees can not be greater than the seats available.")
                 }
             }
-
-    @api.constrains("instructor_id", "attendee_ids")
-    def _check_instructor_in_attendee(self):
-        for record in self.filtered('instructor_id'):
-            if record.instructor_id in record.attendee_ids:
-                raise ValidationError(_("A session's instructor can't be an attendee."))
