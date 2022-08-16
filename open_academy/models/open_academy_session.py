@@ -1,5 +1,6 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+from datetime import timedelta
 
 
 class OpenAcademySession(models.Model):
@@ -42,7 +43,8 @@ class OpenAcademySession(models.Model):
                 continue
 
             start = fields.Datetime.from_string(record.start_date)
-            record.end_date = start + record.duration
+            duration = timedelta(days=record.duration, seconds=-1)
+            record.end_date = start + duration
 
     @api.constrains("instructor_id", "attendee_ids")
     def _check_instructor_in_attendee(self):
